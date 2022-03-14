@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Sushi Bar</title>
+</head>
+
+<body>
+
+  <div id="message"></div>
+
+  <main class="table-container">
+    <img class="sushi-platter" src="./resources/sushi-plate.png" alt="Sushi Platter">
+    <div class="inner-container">
+
+      <div id="table"></div>
+
+      <div class="table-controls">
+        <!-- TABLE SETUP -->
+        <div>
+          <input id="numOfChairsInput" type="number" placeholder="Table capacity">
+          <button id="submitBtn" class="btn"><span>Set Capacity</span></button>
+        </div>
+
+        <!-- ARRIVING GUESTS -->
+        <div>
+          <input id="arrivingGuestsInput" type="number" placeholder="Guests">
+          <button id="arrivingGuestsSubmitBtn" class="btn"><span>Add Guests</span></button>
+        </div>
+
+        <div>
+          <button id="showIndicesBtn" class="btn"><span>Toggle Indices</span></button>
+          <button id="removeGroupBtn" class="btn"><span>Remove Group</span></button>
+        </div>
+
+      </div>
+  </main>
+
+  <div class="info">
+    <h1>Herzlich Willkommen zum Sushi Bar!</h1>
+
+    <ul>
+      <li>Please enter a number of chairs for the table's capacity</li>
+      <li>Then it's time to start adding guests. You can do this by typing a number between 1 and the maximum number of
+        chairs that the table has available
+      </li>
+        <li>If a group has finished eating, you can remove them from the table simply by clicking on any member of that
+          group. Once selected, simply click the 'Remove Group' button. You can remove multiple groups at the same time if
+          you wish.
+        </li>
+        <li>To see the indecis of the chairs at the table use the 'toggle indecis' button.</li>
+    </ul>
+  
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+
+</html>

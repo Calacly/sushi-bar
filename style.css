@@ -1,0 +1,212 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --brandColorOne: #2C3F48;
+  --brandColorTwo: #FFDD01;
+}
+
+body {
+  font-family: sans-serif;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+::selection {
+  background-color: var(--brandColorTwo);
+}
+
+#message {
+  position: absolute;
+  transform: translateX(-50%);
+  width: 60%;
+  left: 50%;
+  padding: 1.5rem;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+}
+
+.info {
+  position: absolute;
+  top: 15%;
+  width: 50%;
+  max-width: 500px;
+  padding: 1rem 1rem;
+  line-height: 1.5;
+}
+
+.info ul {
+  margin-left: 1rem;
+}
+
+.info ul li {
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  text-transform: uppercase;
+  line-height: 1.2;
+  text-align: center;
+  padding: 1rem 0 2rem;
+}
+
+.table-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inner-container {
+  height: 100%;
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.table-controls {
+  display: flex;
+  flex-direction: column;
+  margin-right: -0.5rem;
+}
+
+.table-controls > div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+input {
+  width: 50%;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  font-size: 1rem;
+  text-align: center;
+}
+
+#table {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  margin-top: 6rem;
+  background-color: #2C3F48;
+  border-radius: 150px;
+}
+
+.chair {
+  width: 40px;
+  height: 40px;
+  background-color: #FFDD01;
+  border-radius: 100px;
+  transition: all 0.4s ease;
+}
+
+.chair > span {
+  pointer-events: none;
+}
+
+.chair > span, button, input::placeholder {
+  user-select: none;
+}
+
+
+.chair.booked {
+  background-color: #44bd32;
+}
+
+.chair.remove {
+  opacity: 0.5;
+  transform: scale(0.8);
+}
+
+.hide {
+  opacity: 0;
+}
+
+
+span {
+  position: relative;
+  z-index: 5;
+}
+
+.btn {
+  position: relative;
+  flex: 1 1 50%;
+  background: var(--brandColorOne);
+  cursor: pointer;
+  padding: 15px;
+  margin-right: 0.5rem;
+  color: #fff;
+  text-align: center;
+  border: none;
+  border-radius: 3px;
+  transition: all .5s ease;
+  overflow: hidden;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn::after {
+  content: "";
+  position: absolute;  
+  border-top: 15px solid transparent;
+   border-bottom: 15px solid transparent;
+   border-right: 15px solid transparent;
+   border-left: 15px solid var(--brandColorTwo);
+   transform: scale(1);
+   transform: rotate(45deg);
+   top: 30px;
+   right: -15px;
+   
+}
+
+.btn:hover::after,
+.btn:focus::after{
+   border-left: 15px solid var(--brandColorOne);
+   top: 30px;
+   right: -15px;
+   transform: scale(.7) rotate(45deg);
+   transition: all.5s ease;
+}
+
+.btn:hover,
+.btn:focus {
+  background: var(--brandColorTwo);
+  color: var(--btn);
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 8px;
+  background: var(--brandColorTwo);
+  transform: rotate(-45deg);
+  top: 18px;
+  left: 87px;
+  transition: all .5s ease;
+}
+
+.btn:hover::before,
+.btn:focus::before {
+  transform: rotate(-45deg) scale(20)  translateX(-50px);
+}
+
+.sushi-platter {
+  position: absolute;
+  user-select: none;
+  width: 320px;
+  bottom: 1rem;
+  right: 1rem;
+}
