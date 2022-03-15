@@ -16,10 +16,20 @@ class SushiTableSetup {
     this.message = document.getElementById('message');
     this.chairs = [...document.querySelectorAll('.chair')];
     // events
-    this.submitBtn.addEventListener('click', (e) => this.setTableCapacity(e));
-    this.arrivingGuestsSubmitBtn.addEventListener('click', (e) => {
-      this.setArrivingGuests(e);
+    this.submitBtn.addEventListener('click', () => this.setTableCapacity());
+    this.arrivingGuestsSubmitBtn.addEventListener('click', () => {
+      this.setArrivingGuests();
     });
+    this.arrivingGuestsInput.addEventListener('keydown', (e) => {
+      if(e.key == 'Enter') {
+        this.setArrivingGuests();
+      }
+    })
+    this.numOfChairsInput.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter') {
+        this.setTableCapacity();
+      }
+    })
   }
 
   setEvents() {
@@ -37,10 +47,10 @@ class SushiTableSetup {
     // pass in table capacity to createChairs method
     const totalChairs = parseInt(this.numOfChairsInput.value);
     if(totalChairs > 20) {
-      this.message.innerHTML = '<h2>There is not quite enough room for so many chairs 🤨 Please enter between 2 - 20</h2>';
+      this.message.innerHTML = '<h2>Leider ist nicht genug Platz für so viele Stühle 🤨. Bitte gib eine Zahl zwischen 2 und 20 ein.</h2>';
       return;
     } else if(!totalChairs || totalChairs < 2) {
-      this.message.innerHTML = '<h2>Please add at least 2 chairs</h2>';
+      this.message.innerHTML = '<h2>Bitte gib mindestens 2 Stühle ein.</h2>';
      return;
     }
     this.message.innerHTML = '';
@@ -87,7 +97,7 @@ class SushiTableSetup {
           if(guest.dataset.id === e.target.dataset.id && guest.classList.contains('remove')) {
             guest.classList.remove('booked');
             guest.classList.remove('remove');
-            this.message.innerHTML = '<h2>More space has just become available!</h2>';
+            this.message.innerHTML = '<h2>Nun ist wieder mehr Platz frei geworden.</h2>';
             this.arrivingGuestsInput.value = '';
             this.arrivingGuestsInput.focus();
           }
@@ -119,10 +129,10 @@ class SushiTableSetup {
     const numOfGuests = parseInt(this.arrivingGuestsInput.value);
     // Check user's input value and display message if necessary
     if(!numOfGuests) {
-      this.message.innerHTML = '<h2>Please enter the number of arriving guests</h2>';
+      this.message.innerHTML = '<h2>Bitte gib die Anzahl der ankommenden Gäste ein.</h2>';
       return;
     } else if(numOfGuests > chairs.length) {
-      this.message.innerHTML = '<h2>Sorry, the table is not big enough for this group</h2>';
+      this.message.innerHTML = '<h2>Leider ist der Tisch nicht groß genug für diese Gruppe.</h2>';
       return;
     } else {
       this.message.innerHTML = '';
@@ -140,7 +150,7 @@ class SushiTableSetup {
 
     // Return early if table capacity is full
     if(this.isFullyBooked(chairs)) {
-      this.message.innerHTML = '<h2>Sorry, the table is fully booked!</h2>';
+      this.message.innerHTML = '<h2>Leider ist der Tisch vollständig ausgebucht.</h2>';
       return;
     }
     
@@ -196,12 +206,11 @@ class SushiTableSetup {
 
     for(let i = 0; i < freeSeatsArray.length; i++) {
 
-      let startInd = indexFreeSeatsArray[i];
       let groupId = Math.random();
       let count = 0;
 
       if(freeSeatsArray.every(item => item < parseInt(this.arrivingGuestsInput.value))) {
-        this.message.innerHTML = '<h2>No space, they will have to go hungry!</h2>';
+        this.message.innerHTML = '<h2>Es gibt nicht genug Platz für diese Gäste – leider müssen sie die Bar hungrig verlassen.</h2>';
         break;
       }
      

@@ -36,6 +36,7 @@ body {
   width: 50%;
   max-width: 500px;
   padding: 1rem 1rem;
+  padding-left: 2rem;
   line-height: 1.5;
 }
 
@@ -91,6 +92,10 @@ input {
   margin-right: 0.5rem;
   font-size: 1rem;
   text-align: center;
+}
+
+input::placeholder {
+  font-size: 0.9rem;
 }
 
 #table {
@@ -160,8 +165,8 @@ span {
 .btn::after {
   content: "";
   position: absolute;  
-  border-top: 15px solid transparent;
-   border-bottom: 15px solid transparent;
+  border-top: 16px solid transparent;
+   border-bottom: 16px solid transparent;
    border-right: 15px solid transparent;
    border-left: 15px solid var(--brandColorTwo);
    transform: scale(1);
@@ -194,7 +199,7 @@ span {
   background: var(--brandColorTwo);
   transform: rotate(-45deg);
   top: 18px;
-  left: 87px;
+  left: 110px;
   transition: all .5s ease;
 }
 
